@@ -16,7 +16,11 @@ const EarthCanvas = () => {
   return (
     <Canvas
       shadows
+<<<<<<< HEAD
       frameloop="demand"
+=======
+      frameloop='demand'
+>>>>>>> master
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
       camera={{
@@ -41,4 +45,8 @@ const EarthCanvas = () => {
   );
 };
 
+<<<<<<< HEAD
 export default EarthCanvas;
+=======
+export default EarthCanvas;
+>>>>>>> master

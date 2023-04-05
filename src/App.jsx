@@ -20,11 +20,34 @@ const App = () => {
           <Navbar />
           <Hero />
         </div>
+<<<<<<< HEAD
         <About />
         <Experience />
         <Tech />
         <Works />
         <Feedbacks />
+=======
+        <div className="makingSticky">
+          <div className="stickyItems">
+            <About />
+          </div>
+          <div className="stickyItems">
+            <Experience />
+          </div>
+
+          <div className="stickyItems">
+            <Tech />
+          </div>
+
+          <div className="stickyItems">
+            <Works />
+          </div>
+
+          <div className="stickyItems">
+            <Feedbacks />
+          </div>
+        </div>
+>>>>>>> master
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />

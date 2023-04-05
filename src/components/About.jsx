@@ -35,10 +35,32 @@ const ServiceCard = ({ index, title, icon }) => (
   </Tilt>
 );
 
+<<<<<<< HEAD
 
 
 
 const About = () => {
+=======
+const About = () => {
+  // Set the start date to when you began working as a React developer
+  const startDate = new Date("2022-03-01");
+
+  // Get the current date
+  const currentDate = new Date();
+
+  // Calculate the difference in months between the start date and current date
+  const diffInMonths =
+    (currentDate.getFullYear() - startDate.getFullYear()) * 12 +
+    (currentDate.getMonth() - startDate.getMonth());
+
+  // Display the total number of months of experience
+  // console.log(
+  //   `As a React developer with ${diffInMonths} month${
+  //     diffInMonths !== 1 ? "s" : ""
+  //   } of experience...`
+  // );
+
+>>>>>>> master
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -50,11 +72,21 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
+<<<<<<< HEAD
         I'm a skilled software developer with experience in TypeScript and
         JavaScript, and expertise in frameworks like React, Node.js, and
         Three.js. I'm a quick learner and collaborate closely with clients to
         create efficient, scalable, and user-friendly solutions that solve
         real-world problems. Let's work together to bring your ideas to life!
+=======
+        {` As a React developer with ${diffInMonths} months of experience, I have honed my
+        skills in JavaScript and am currently learning TypeScript to expand my
+        expertise. I pride myself on being a quick learner and attentive
+        listener, which allows me to collaborate effectively with clients to
+        create efficient and scalable solutions. My focus is on developing
+        user-friendly applications that solve real-world problems. Let's team up
+        to bring your ideas to fruition!`}
+>>>>>>> master
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

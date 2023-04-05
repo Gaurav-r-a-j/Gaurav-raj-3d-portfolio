@@ -44,7 +44,11 @@ const Contact = () => {
 
         {
           from_name: form.name,
+<<<<<<< HEAD
           to_name: "JavaScript Mastery",
+=======
+          to_name: "Gaurav raj",
+>>>>>>> master
           from_email: form.email,
           to_email: "bboyskilleryt@gmail.com",
           message: form.message,

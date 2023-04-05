@@ -89,7 +89,11 @@ const Works = () => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
+<<<<<<< HEAD
         {projects.map((project, index) => (
+=======
+        {projects?.map((project, index) => (
+>>>>>>> master
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
