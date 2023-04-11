@@ -5,16 +5,19 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
+// import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { useUser } from "../contexts/UserContext";
+import { gradientClasses } from "../constants/gradientClassname";
 
 const ProjectCard = ({
   index,
-  name,
-  description,
-  tags,
+  liveurl,
+  githuburl,
+  title,
   image,
-  source_code_link,
+  description,
+  techStack,
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -24,41 +27,63 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full min-h-[600px]"
       >
-        <div className="relative w-full h-[230px]">
+        <div className="relative w-full h-[230px] ">
           <img
-            src={image}
+            src={image.url}
             alt="project_image"
             className="w-full h-full object-cover rounded-2xl"
           />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-            >
-              <img
-                src={github}
-                alt="source code"
-                className="w-1/2 h-1/2 object-contain"
-              />
+          {githuburl !== "" && (
+            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+              <a
+                // onClick={() => window.open(githuburl, "_blank")}
+                href={githuburl !== "" && githuburl}
+                target="blank"
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              >
+                <img
+                  src={github}
+                  alt="source code"
+                  className="w-1/2 h-1/2 object-contain"
+                />
+              </a>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+          <div className="flex justify-between  items-center  w-full gap-2">
+            <h3 className="text-white font-bold text-[24px]">{title}</h3>
+
+            {liveurl !== "" && (
+              <a href={liveurl} target="blank" className="  text-[14px]">
+                <button class="  bg-gradient-to-r from-pink-500 to-purple-500 text-white font-light py-1 px-4 rounded-full shadow-lg hover:shadow-xl neon-text">
+                  Live
+                </button>
+              </a>
+            )}
+          </div>
+
+          <p className="mt-2 text-secondary text-[14px]  min-h-[200px]">
+            {/* {description?.slice(0,300)}... */}
+            {description}
+          </p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
+          {techStack?.map((tag) => (
             <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
+              key={`${title}-${tag}`}
+              className={`text-[14px] ${
+                gradientClasses[
+                  Math.floor(Math.random() * gradientClasses.length)
+                ]
+              } `}
             >
-              #{tag.name}
+              {/* ${tag.color} */}#{tag}
             </p>
           ))}
         </div>
@@ -68,6 +93,7 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const { user } = useUser();
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -89,13 +115,11 @@ const Works = () => {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
-<<<<<<< HEAD
-        {projects.map((project, index) => (
-=======
-        {projects?.map((project, index) => (
->>>>>>> master
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
-        ))}
+        {user?.projects
+          ?.sort((a, b) => a?.sequence - b?.sequence) // sort projects by sequence
+          .map((project, index) => (
+            <ProjectCard key={`project-${index}`} index={index} {...project} />
+          ))}
       </div>
     </>
   );

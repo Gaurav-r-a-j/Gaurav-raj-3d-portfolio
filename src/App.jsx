@@ -11,8 +11,18 @@ import {
   Works,
   StarsCanvas,
 } from "./components";
+import { useUser } from "./contexts/UserContext";
+import { useEffect } from "react";
 
 const App = () => {
+  const { getUser } = useUser();
+  // console.log(import.meta.env.VITE_USER_ID);
+  useEffect(() => {
+    getUser(import.meta.env.VITE_USER_ID);
+
+    return () => {};
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-primary">
@@ -20,13 +30,6 @@ const App = () => {
           <Navbar />
           <Hero />
         </div>
-<<<<<<< HEAD
-        <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-=======
         <div className="makingSticky">
           <div className="stickyItems">
             <About />
@@ -47,7 +50,6 @@ const App = () => {
             <Feedbacks />
           </div>
         </div>
->>>>>>> master
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />

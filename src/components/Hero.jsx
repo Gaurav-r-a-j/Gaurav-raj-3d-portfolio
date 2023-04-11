@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import { useUser } from "../contexts/UserContext";
 
 const Hero = () => {
+  const { user } = useUser();
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -16,11 +18,19 @@ const Hero = () => {
 
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915EFF]">Gaurav</span>
+            Hi, I'm{" "}
+            <span className="text-[#915EFF]">
+              {" "}
+              {user?.name?.split(" ")[0]}{" "}
+            </span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop 3D visuals, user <br className="sm:block hidden" />
-            interfaces and web applications
+            {/* I develop 3D visuals, user <br className="sm:block hidden" />
+            interfaces and web applications */}
+
+            {user?.about?.subTitle?.slice(0, 27)}
+            <br className="sm:block hidden" />
+            {user?.about?.subTitle?.slice(27)}
           </p>
         </div>
       </div>

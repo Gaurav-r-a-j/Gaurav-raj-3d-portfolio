@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import logo from "./logo.svg";
-=======
 import logo from "./logo.png";
->>>>>>> master
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -31,13 +27,8 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
 import carrent from "./carrent.png";
-<<<<<<< HEAD
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
-=======
 import jobit from "./jobit.webp";
 import tripguide from "./tripguide.webp";
->>>>>>> master
 
 export {
   logo,
