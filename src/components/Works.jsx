@@ -20,14 +20,14 @@ const ProjectCard = ({
   techStack,
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    // <motion.div variants={fadeIn("", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
           max: 45,
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full min-h-[600px]"
+        className="bg-tertiary p-5 rounded-2xl  w-full "
       >
         <div className="relative w-full h-[230px] ">
           <img
@@ -88,7 +88,7 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
-    </motion.div>
+    // </motion.div>
   );
 };
 
@@ -114,7 +114,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className=" grid mt-20 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:gap-8 gap-5">
         {user?.projects
           ?.sort((a, b) => a?.sequence - b?.sequence) // sort projects by sequence
           .map((project, index) => (
