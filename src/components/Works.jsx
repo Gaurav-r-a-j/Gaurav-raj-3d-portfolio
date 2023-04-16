@@ -1,5 +1,5 @@
 import React from "react";
-import {Tilt} from "react-tilt";
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -21,73 +21,73 @@ const ProjectCard = ({
 }) => {
   return (
     // <motion.div variants={fadeIn("", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl  w-full "
-      >
-        <div className="relative w-full h-[230px] ">
-          <img
-            src={image.url}
-            alt="project_image"
-            className="w-full h-full object-cover rounded-2xl"
-          />
+    <Tilt
+      options={{
+        max: 45,
+        scale: 1,
+        speed: 450,
+      }}
+      className="bg-tertiary p-5 rounded-2xl  w-full "
+    >
+      <div className="relative w-full h-[230px] ">
+        <img
+          src={image.url}
+          alt="project_image"
+          className="w-full h-full object-cover rounded-2xl"
+        />
 
-          {githuburl !== "" && (
-            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-              <a
-                // onClick={() => window.open(githuburl, "_blank")}
-                href={githuburl !== "" && githuburl}
-                target="blank"
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              >
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </a>
-            </div>
+        {githuburl !== "" && (
+          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+            <a
+              // onClick={() => window.open(githuburl, "_blank")}
+              href={githuburl !== "" && githuburl}
+              target="blank"
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+            >
+              <img
+                src={github}
+                alt="source code"
+                className="w-1/2 h-1/2 object-contain"
+              />
+            </a>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-5">
+        <div className="flex justify-between  items-center  w-full gap-2">
+          <h3 className="text-white font-bold text-[24px]">{title}</h3>
+
+          {liveurl !== "" && (
+            <a href={liveurl} target="blank" className="  text-[14px]">
+              <button class="  bg-gradient-to-r from-pink-500 to-purple-500 text-white font-light py-1 px-4 rounded-full shadow-lg hover:shadow-xl neon-text">
+                Live
+              </button>
+            </a>
           )}
         </div>
 
-        <div className="mt-5">
-          <div className="flex justify-between  items-center  w-full gap-2">
-            <h3 className="text-white font-bold text-[24px]">{title}</h3>
+        <p className="mt-2 text-secondary text-[14px]  min-h-[200px]">
+          {/* {description?.slice(0,300)}... */}
+          {description}
+        </p>
+      </div>
 
-            {liveurl !== "" && (
-              <a href={liveurl} target="blank" className="  text-[14px]">
-                <button class="  bg-gradient-to-r from-pink-500 to-purple-500 text-white font-light py-1 px-4 rounded-full shadow-lg hover:shadow-xl neon-text">
-                  Live
-                </button>
-              </a>
-            )}
-          </div>
-
-          <p className="mt-2 text-secondary text-[14px]  min-h-[200px]">
-            {/* {description?.slice(0,300)}... */}
-            {description}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {techStack?.map((tag) => (
+          <p
+            key={`${title}-${tag}`}
+            className={`text-[14px] ${
+              gradientClasses[
+                Math.floor(Math.random() * gradientClasses.length)
+              ]
+            } `}
+          >
+            {/* ${tag.color} */}#{tag}
           </p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {techStack?.map((tag) => (
-            <p
-              key={`${title}-${tag}`}
-              className={`text-[14px] ${
-                gradientClasses[
-                  Math.floor(Math.random() * gradientClasses.length)
-                ]
-              } `}
-            >
-              {/* ${tag.color} */}#{tag}
-            </p>
-          ))}
-        </div>
-      </Tilt>
+        ))}
+      </div>
+    </Tilt>
     // </motion.div>
   );
 };
@@ -96,22 +96,24 @@ const Works = () => {
   const { user } = useUser();
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
+      {/* <motion.div variants={textVariant()}> */}
+      <p className={`${styles.sectionSubText} `}>My work</p>
+      <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
+      {/* </motion.div> */}
 
       <div className="w-full flex">
-        <motion.p
+        {/* <motion.p
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
+        > */}
+        <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
           links to code repositories and live demos in it. It reflects my
           ability to solve complex problems, work with different technologies,
           and manage projects effectively.
-        </motion.p>
+        </p>
+        {/* </motion.p> */}
       </div>
 
       <div className=" grid mt-20 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:gap-8 gap-5">
